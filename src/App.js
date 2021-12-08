@@ -1,5 +1,5 @@
 import React from 'react';
-import { Navigate,BrowserRouter,Routes,Route } from 'react-router-dom';
+import { Navigate,BrowserRouter,Routes,Route,Link,Outlet } from 'react-router-dom';
 import {store} from "./actions/store";
 import { Provider } from "react-redux";
 import Salesparent from './Components/Salesparent';
@@ -10,15 +10,25 @@ import Login  from './Login/Login';
 import WareHouse from './Components/WareHouse'
 import Salary from './Components/salary'
 import Sales_master from './Components/sales_master';
+import StockTransfer from './Components/StockTransfer';
+import sales_master from './Components/sales_master';
+import test1 from './Components/test'
 
 
 
 function App() {
   return (
-  
-  <Provider store={store}>
-   <WareHouse/>  
-  </Provider>
+    <>
+    <SideNav />
+    <WareHouse />
+    <StockTransfer />
+      <nav style={{borderBottom: "solid 1px",paddingBottom: "1rem", color:"white"}}>
+        <Link to="/Salesparent" style={{color:"white"}}>Salesparent</Link>
+        <Link to="/WareHouse" style={{color:"white"}}>WareHouse</Link>
+        
+      </nav>
+      <Outlet />
+</>
 
   );
 }

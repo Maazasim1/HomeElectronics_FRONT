@@ -16,7 +16,7 @@ function Sales_preview(props){
 
 
     useEffect(() => {
-        actions.TableString.StringOfTable="BillChild_POS";
+        actions.TableString.StringOfTable="Bill_Child_Temp";
         console.log('Updating Sales_preview')
         props.fetchAllPos();
     }, [reRender.reRender]);
@@ -24,6 +24,7 @@ function Sales_preview(props){
 
     return(
         <div className="table1" style={{"background":"transparent"}}>
+            {console.log(props.poslist)}
         {props.poslist.map((record, index) => {
             return (<ul className="list-group" key={index} style={{"background":"transparent"}}>
             <li className="list-group-item d-flex justify-content-between align-items-center" style={{"background":"transparent"}}>

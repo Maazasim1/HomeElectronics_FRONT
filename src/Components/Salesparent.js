@@ -9,7 +9,7 @@ function Salesparent(props) {
 
   
 
-    return (<div>
+    return (<div style={{paddingLeft:"8vw"}}>
     
         <div id="parent" className="rowC"> <Sales className="Sales"/> <Sales_preview className="preview"/>  </div>
              <div><Sales_master/></div>

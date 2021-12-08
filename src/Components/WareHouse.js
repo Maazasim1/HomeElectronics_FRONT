@@ -42,11 +42,11 @@ function WareHouse(props){
 
 
     return(
-        <div>
+        <div style={{paddingLeft:"10vw"}}>
             <section className="pos">
                 <h1 className="title">WareHouse Management</h1>
             <form className="contact-form row" onSubmit={handleSubmit}>
-            <h4 className="subtitle">Add New items in stock</h4>
+            <h3 className="subtitle">Add New items in stock</h3>
             <div className="form-field col-lg-6">
                 
             <label className="label">Location</label> 
@@ -60,7 +60,7 @@ function WareHouse(props){
                 <div className="form-field col-lg-6">
     <label className="label" for="Supplier" style={{marginBottom:"20px"}}>Supplier</label>
    <select value={values.ItemBrand} onChange={handleInputChange} name="ItemBrand" id="comp">
-        <option value="Haier">Hair</option>
+        <option value="Haier">Haier</option>
         <option value="Anex">Anex</option>
         <option value="Dawlance">Dawlance</option>
         <option value="Samsung">Samsung</option>
@@ -100,60 +100,7 @@ function WareHouse(props){
 
             </form>
             
-            <form className='contact-form row'>
-            <h4 className="subtitle">Stock Transfer</h4>
-                <div className='form-field col-lg-6'>
-            <label className='label'>From</label> 
-                <select>
-                    <option value="WareHouse#1">WareHouse#1</option>
-                    <option>WareHouse#2</option>
-                    <option>Shop</option>
-                </select>
-                </div>
-
-                <div className='form-field col-lg-6'>
-                <label className='label'>To</label> 
-                <select>
-                    <option value="WareHouse#1">WareHouse#1</option>
-                    <option>WareHouse#2</option>
-                    <option>Shop</option>
-                </select>
-                </div>
-                <div className="form-field col-lg-6">
-    <label className="label" for="Supplier" style={{marginBottom:"20px"}}>Supplier</label>
-   <select name="company" id="comp">
-        <option value="Haier">Hair</option>
-        <option value="Anex">Anex</option>
-        <option value="Dawlance">Dawlance</option>
-        <option value="Samsung">Samsung</option>
-        <option value="LG">LG</option>
-        <option value="Hyundai">Hyundai</option>
-        <option value="TCL">TCL</option>
-        <option value="Sony">Sony</option>
-    </select>
-      </div>
-      <div className="form-field col-lg-6">
-        <label className="label" for="Type" style={{marginBottom:"20px"}}>Type</label>
-        <select name="languages" id="lang">
-            <option value="AC">AC</option>
-            <option value="LED">LED</option>
-            <option value="Refrigerator">Refrigerator</option>
-            <option value="Heater">Heater</option>
-            <option value="Washing">Washing Machine</option>
-      </select>
-      </div>
-      <div className="form-field col-lg-6">
-         <input id="SKU" className="input-text js-input" type="text" required/>
-         <label className="label" for="">Product SKU</label>
-      </div>
-      <div className='form-field col-lg-6'>
-            <input id="Quantity" className="input-text js-input" type="number" required/>
-            <label className="label" for=''>Quantity</label>
-        </div>
-      <div className="form-field col-lg-12">
-         <input className="submit-btn" type="submit" value="Update Warehouse"/>
-      </div>
-            </form>
+            
             </section>
             <ToastContainer />
         </div>

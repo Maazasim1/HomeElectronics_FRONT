@@ -11,8 +11,8 @@ function salary(){
 
 
 return(
-<div>
-    <section className='salaryUpdate'>
+<div style={{paddingLeft:"10vw"}}>
+    <section className='pos'>
         <h1 className='title'>Update Employee Salary Data</h1>
 
                 

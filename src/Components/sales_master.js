@@ -2,6 +2,8 @@ import React, {useState} from 'react';
 import './forms.css'
 import {connect} from 'react-redux';
 import * as actions from '../actions/pos';
+import PrintInvoice from './PrintInvoice'
+import * as Sales_preview from './Sales_preview';
 
 
 
@@ -9,9 +11,13 @@ import * as actions from '../actions/pos';
 
 
 function Sales_master(props) {
+   var today = new Date();
+   var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+
+
     const initial={
- 
-        BillCreatedOn:'',
+         BillCreatedBy:'',
+        BillCreatedOn:date,
         CustomerName:'',
         CustomerPhoneNumber:'',
         CustomerAddress:'',
@@ -42,13 +48,13 @@ function Sales_master(props) {
     console.log(method);
  
     const handleSubmit =e=>{
-      actions.TableString.StringOfTable="BillMaster_POS";
-
-       console.log("Now Putting into lists")
- 
+       console.log("Now Putting into lists");
        e.preventDefault();
        console.log(values);
-       props.createPos(values,()=>{window.alert('New Sale Completed')})
+       actions.TableString.StringOfTable="BillMaster_POS";
+       props.createPos(values,()=>{window.alert('New Sale Completed')});
+       Sales_preview.reRender.reRender+=1
+
     }
     const handleInputChange=e=>{
        const {name,value}=e.target
@@ -64,32 +70,32 @@ function Sales_master(props) {
     <h1 className="title">CheckOut</h1>
     <form className="contact-form row" onSubmit={handleSubmit}>
     <div className="form-field col-lg-6">
-          <input name="BillCreatedBy"   id="posName" className="input-text js-input" type="text" required value={values.name}/>
+          <input name="BillCreatedBy"   id="posName" className="input-text js-input" type="text" required value={values.BillCreatedBy} onChange={handleInputChange}/>
           <label className="label" for="">POS Employee Name</label>
        </div>
 
        <div className="form-field col-lg-6 ">
-          <input name="CustomerName" value={values.name}  id="Customer" className="input-text js-input" type="text" required/>
+          <input name="CustomerName" value={values.CustomerName} onChange={handleInputChange}  id="Customer" className="input-text js-input" type="text" required/>
           <label className="label" for="company">Customer Name</label>
        </div>
 
         <div className="form-field col-lg-6 ">
-          <input name="CustomerPhoneNumber" value={values.name}  id="phone" className="input-text js-input" type="text" required/>
+          <input name="CustomerPhoneNumber" value={values.CustomerPhoneNumber} onChange={handleInputChange}  id="phone" className="input-text js-input" type="text" required/>
           <label className="label" for="phone">Contact Number</label>
        </div>
 
        <div className="form-field col-lg-6 ">
-            <input name="DeliveryCharges" value={values.name}  id="Delivery" className="input-text js-input" type="Quantity" />
+            <input name="DeliveryCharges" value={values.DeliveryCharges} onChange={handleInputChange}  id="Delivery" className="input-text js-input" type="Quantity" />
             <label className="label" for="Delivery">Delivery Charges</label>
        </div>
 
        <div className="form-field col-lg-6 ">
-       <input name="InstallationChares" value={values.name}  id="Installation" className="input-text js-input" type="Quantity" />
+       <input name="InstallationChares" value={values.InstallationChares} onChange={handleInputChange}  id="Installation" className="input-text js-input" type="Quantity" />
           <label className="label" for="Installation">Installation Charges</label>
        </div>
        <div className="form-field col-lg-6 ">
-       <input name="BillCreatedOn" value={values.BillCreatedOn} onSubmit={handleInputChange}  id="billDate" className="input-text js-input" type="Date" />
-          <label className="label" for="Installation">BILL DATE</label>
+       <input name="BillCreatedOn" value={values.BillCreatedOn} onChange={handleInputChange}  id="billDate" className="input-text js-input" type="Date" />
+          <label className="label">BILL DATE</label>
        </div>
        <div className="form-field col-lg-6 ">
           <label className="label" for="payment">Payment Method</label>
@@ -153,15 +159,15 @@ function Sales_master(props) {
        </div>
        
        <div className="form-field col-lg-12">
-          <input name="CustomerAddress" value={values.name} name="Address"   id="Address" className="input-text js-input" type="text" required/>
+          <input name="CustomerAddress" value={values.CustomerAddress} onChange={handleInputChange}   id="Address" className="input-text js-input" type="text" required/>
           <label className="label" for="Address">Address</label>
        </div>
        <div className="form-field col-lg-12">
-         <input  className="submit-btn" type="button" onClick={handleAdvance} value="Credit"/>
       </div>
        <div className="form-field col-lg-12">
           <input  className="submit-btn" type="submit" value="Make Sale"/>
        </div>
+       <PrintInvoice />
     </form>
  </section>
        </div>

@@ -2,7 +2,7 @@ import api from './api';
 
 
     
-    const baseurl = "http://localhost:5000/api/";
+    const baseurl = "http://0.0.0.0:5000/api/";
 
 export var TableString={StringOfTable:""};
 
@@ -37,7 +37,7 @@ export const create = (data,onSuccess,Table=TableString.StringOfTable) => dispat
         })
         onSuccess()
     })
-    .catch(err=>console.log(err))
+    .catch(err=>console.log(err));
 }
 
 export const update = (data,id,onSuccess,Table) => dispatch => {

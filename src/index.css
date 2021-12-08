@@ -1,4 +1,11 @@
 body {
+  background-image: url('./BackGround.png');
+  background-position: 'center';
+  background-size: 'cover';
+  max-height: 100vh;
+  overscroll-behavior-y: none;
+  background-attachment: fixed;
+
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',

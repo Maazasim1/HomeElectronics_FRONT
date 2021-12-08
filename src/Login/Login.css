@@ -1,9 +1,4 @@
-    body {
-        color: #000;
-        overflow-x: hidden;
-        height: 100%;
-        background-size: cover;
-    }
+   
 
 
     .field {
@@ -54,8 +49,8 @@
     }
 
     #logo {
-        width: 70px;
-        height: 60px
+        width: 170px;
+        height: 160px
     }
 
     .heading {
