@@ -1,5 +1,4 @@
 import React,{useState} from "react";
-import {Link} from 'react-router-dom';
 import './Login.css';
 import PropTypes from 'prop-types'
 
@@ -42,7 +41,7 @@ export default function Login({ setToken }) {
                     <div className="card card1">
                         <div className="row justify-content-center my-auto">
                             <div className="col-md-8 col-10 my-5">
-                            <div class="row justify-content-center px-3 mb-3"> <img id="logo" src="https://i.imgur.com/HTqt8Gi.png"/> </div>
+                            <div class="row justify-content-center px-3 mb-3"> <img id="logo" src="https://i.imgur.com/HTqt8Gi.png" alt="logo"/> </div>
                                 <div className="row justify-content-center px-3 mb-3"> </div>
                                 <h6 className="msg-info">Please login to your account</h6>
                                 <form onSubmit={handleSubmit}>

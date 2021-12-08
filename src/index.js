@@ -5,19 +5,16 @@ import 'font-awesome/css/font-awesome.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-import Sales from './Components/Sales'
 import Dashboard from './Components/Dashboard'
-import App from './App';
 import SideNav from './Components/SideNav';
-import Test1 from './Components/test';
 import { BrowserRouter,Route,Routes } from 'react-router-dom';
-import Sales_master from './Components/sales_master';
 import WareHouse from './Components/WareHouse';
 import {store} from "./actions/store";
 import { Provider } from "react-redux";
 import Salesparent from './Components/Salesparent';
 import Salary from './Components/salary';
 import SalesUpdate from './Components/salesUpdate';
+import Expenses from './Components/Expenses';
 
 
 ReactDOM.render(
@@ -31,6 +28,7 @@ ReactDOM.render(
         <Route path="Dashboard" element={<Dashboard/>}/>
         <Route path="Salary" element={<Salary/>}/>
         <Route path="updatesales" element={<SalesUpdate />}/>
+        <Route path="Expenses" element={<Expenses/>}/>
       </Route>
     </Routes>
    </BrowserRouter>

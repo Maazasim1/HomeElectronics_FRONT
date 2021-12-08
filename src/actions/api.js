@@ -1,6 +1,6 @@
 import axios from "axios";
 
-
+// eslint-disable-next-line
 export default{
     pos(baseurl ,Tables){
        const url=baseurl+Tables;

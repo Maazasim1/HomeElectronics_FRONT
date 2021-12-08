@@ -1,6 +1,6 @@
 import './SideNav.css';
 import React ,{useState} from 'react'
-import {Link,Outlet,useNavigate} from 'react-router-dom'
+import {Outlet,useNavigate} from 'react-router-dom'
 import Login from '../Login/Login';
 
 const SideNav = () => {
@@ -71,6 +71,16 @@ const SideNav = () => {
                        <i className="fas fa-money-bill fa-2x"></i>
                         <span className="nav-text">
                             Edit Sales
+                        </span>
+                    </a>
+                   
+                </li>
+
+                <li className="has-subnav">
+                    <a  onClick={() => handleClick("Expenses")}>
+                       <i className="fas fa-money-bill fa-2x"></i>
+                        <span className="nav-text">
+                            Add Expenses
                         </span>
                     </a>
                    

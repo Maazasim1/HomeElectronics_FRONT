@@ -10,12 +10,13 @@ import * as Sales_preview from './Sales_preview';
 
 
 
-function Sales_master(props) {
+function SalesMaster(props) {
    var today = new Date();
    var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
 
 
     const initial={
+       SaleType:"Normal",
          BillCreatedBy:'',
         BillCreatedOn:date,
         CustomerName:'',
@@ -108,7 +109,7 @@ function Sales_master(props) {
      
      <div>
          {
-           method == 'Bank Transfer' ? (
+           method === 'Bank Transfer' ? (
        <div>
           <form className="contact-form row">
           <div className="form-field col-lg-6">
@@ -123,7 +124,7 @@ function Sales_master(props) {
        
        </div>
        
-           ) : method == 'Cheque' ? (
+           ) : method === 'Cheque' ? (
              <div>   
                 <div>
              <form className="contact-form row">
@@ -138,7 +139,7 @@ function Sales_master(props) {
              </form>
           
           </div></div>
-           ) : method == 'Cash' ? (
+           ) : method === 'Cash' ? (
              
                 <div>
              
@@ -157,6 +158,14 @@ function Sales_master(props) {
            ) : null
          }
        </div>
+       <div className="form-field col-lg-6 ">
+          <label className="label" for="payment">Sale Type</label>
+          <select name="Type" id="pay" value={values.SaleType} onChange={handleInputChange}  >
+         <option value="Normal">Normal</option>
+         <option value="Credit">Credit</option>
+         
+     </select>
+     </div>
        
        <div className="form-field col-lg-12">
           <input name="CustomerAddress" value={values.CustomerAddress} onChange={handleInputChange}   id="Address" className="input-text js-input" type="text" required/>
@@ -185,7 +194,7 @@ function Sales_master(props) {
  
    }
    
-   export default connect(mapStateToProps,mapActionToProps)(Sales_master);
+   export default connect(mapStateToProps,mapActionToProps)(SalesMaster);
    
  
  

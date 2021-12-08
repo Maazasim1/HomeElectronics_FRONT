@@ -3,11 +3,6 @@ import './forms.css'
 import {connect} from 'react-redux';
 import * as actions from '../actions/pos';
 import * as Sales_preview from './Sales_preview';
-import { Typeahead } from 'react-bootstrap-typeahead'; 
-import 'react-bootstrap-typeahead/css/Typeahead.css';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import { Button } from 'bootstrap';
 
 
 
@@ -92,14 +87,6 @@ function Sales(props) {
       ItemPrice:'',
    }
    const [values,setValues] = useState(intialvalues);
-   const [method,setMethod]=useState(["Bank Transfer"]);
-   const [change,setChange]=useState(0);
-   const [price,setPrice]=useState(0);
-   const [amount,setAmount]=useState(0);
-   const changes=amount-price;
-   console.log(changes);
-   //setChange(amount-price);
-   console.log(method);
 
    const handleSubmit =e=>{
     actions.TableString.StringOfTable="Bill_Child_Temp";

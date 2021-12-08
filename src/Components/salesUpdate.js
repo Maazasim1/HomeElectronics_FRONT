@@ -14,10 +14,10 @@ function SalesUpdate(props){
 
 const[update,setUpdate] = useState();
 
-    useEffect(async() => {
+    useEffect(() => {
         actions.TableString.StringOfTable="BillMaster_POS";
         console.log('Updating Sales_preview')
-        await props.fetchAllPos();
+        props.fetchAllPos();
     },);
 
 
@@ -41,7 +41,7 @@ const[update,setUpdate] = useState();
         
         );
     })}
-    <ChildUpdate props={update}/>
+    <ChildUpdate props={setUpdate(update)}/>
     </div>);
 }
 

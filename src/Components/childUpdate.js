@@ -1,10 +1,9 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {useEffect} from "react";
 import './forms.css'
 import {connect} from 'react-redux';
 import * as actions from '../actions/pos';
 import './Sales_preview.css'
-import * as SalesUpdate from './salesUpdate'
 
 
 
@@ -13,10 +12,10 @@ function ChildUpdate(props){
 
 
 
-    useEffect(async() => {
+    useEffect(() => {
         actions.TableString.StringOfTable="BillChild_POS";
         console.log('Updating Sales_preview')
-        await props.fetchAllPos();
+        props.fetchAllPos();
         
 
     },);

@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {useEffect} from "react";
 import './forms.css'
 import {connect} from 'react-redux';
@@ -12,14 +12,14 @@ import './Sales_preview.css'
 export var reRender={reRender:""}
 
 
-function Sales_preview(props){
+function SalesPreview(props){
 
 
     useEffect(() => {
         actions.TableString.StringOfTable="Bill_Child_Temp";
         console.log('Updating Sales_preview')
         props.fetchAllPos();
-    }, [reRender.reRender]);
+    }, [props]);
 
 
     return(
@@ -49,4 +49,4 @@ const mapActionToProps =  {
     fetchAllPos: actions.fetchall
 }
 
-export default connect(mapStateToProps,mapActionToProps)(Sales_preview);
+export default connect(mapStateToProps,mapActionToProps)(SalesPreview);

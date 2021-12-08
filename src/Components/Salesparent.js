@@ -1,8 +1,8 @@
 import React from "react";
 import Sales from "./Sales";
-import Sales_master from "./sales_master";
+import SalesMaster from "./sales_master";
 import './SalesParent.css'
-import Sales_preview from "./Sales_preview";
+import SalesPreview from "./Sales_preview";
 
 function Salesparent(props) {
 
@@ -11,8 +11,8 @@ function Salesparent(props) {
 
     return (<div style={{paddingLeft:"8vw"}}>
     
-        <div id="parent" className="rowC"> <Sales className="Sales"/> <Sales_preview className="preview"/>  </div>
-             <div><Sales_master/></div>
+        <div id="parent" className="rowC"> <Sales className="Sales"/> <SalesPreview className="preview" props={"change"}/>  </div>
+             <div><SalesMaster/></div>
     </div>);
 
 }

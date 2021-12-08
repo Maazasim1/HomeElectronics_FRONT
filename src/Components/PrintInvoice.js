@@ -5,7 +5,7 @@ import './forms.css'
 
 function PrintInvoice(props){
     
-    var props = {
+    var arguement = {
         outputType: OutputType.Save,
         returnJsPDFDocObject: true,
         fileName: "Invoice 2021",
@@ -63,7 +63,7 @@ function PrintInvoice(props){
 };
 
 function printInvoiceOnClick () {
-const pdfObject=jsPDFInvoiceTemplate(props).jsPDFDocObject;
+const pdfObject=jsPDFInvoiceTemplate(arguement).jsPDFDocObject;
 
     pdfObject.autoPrint();
     pdfObject.output('dataurlnewwindow');
