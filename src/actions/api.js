@@ -1,4 +1,5 @@
 import axios from "axios";
+axios.defaults.headers.common['Bypass-Tunnel-Reminder'] = 'value'
 
 // eslint-disable-next-line
 export default{

@@ -1,18 +1,20 @@
 import React,{useState} from "react";
 import './Login.css';
 import PropTypes from 'prop-types'
+import {Outlet,useNavigate} from 'react-router-dom'
 
-
+export  var user123={user123:""};
 export default function Login({ setToken }) {
+    
     const [username, setUserName] = useState();
     const [password, setPassword] = useState();
 
-
     async function loginUser(credentials) {
-        return fetch('http://0.0.0.0:5000/api/UserLogin', {
+        return fetch('https://dangerous-snake-22.loca.lt/api/UserLogin', {
           method: 'POST',
           headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'Bypass-Tunnel-Reminder':'true'
           },
           body: JSON.stringify(credentials)
         })
@@ -28,6 +30,8 @@ export default function Login({ setToken }) {
         console.log(token);
         if(token==="token123"){
             setToken(token);
+            localStorage.setItem('username',username)
+            
         }
       }
     
@@ -36,12 +40,12 @@ export default function Login({ setToken }) {
     return (
 
         <div className="container px-4 py-5 mx-auto LOGIN">
-            <div className="card card0">
+            <div className="cardlogin cardlogin0">
                 <div className="d-flex flex-lg-row flex-column-reverse">
-                    <div className="card card1">
+                    <div className="cardlogin cardlogin1">
                         <div className="row justify-content-center my-auto">
                             <div className="col-md-8 col-10 my-5">
-                            <div class="row justify-content-center px-3 mb-3"> <img id="logo" src="https://i.imgur.com/HTqt8Gi.png" alt="logo"/> </div>
+                            <div className="row justify-content-center px-3 mb-3"> <img id="logo" src="https://i.imgur.com/HTqt8Gi.png" alt="logo"/> </div>
                                 <div className="row justify-content-center px-3 mb-3"> </div>
                                 <h6 className="msg-info">Please login to your account</h6>
                                 <form onSubmit={handleSubmit}>
@@ -60,9 +64,9 @@ export default function Login({ setToken }) {
 
                         </div>
                     </div>
-                    <div className="card card2">
-                        <div className="my-auto mx-md-5 px-md-5 right">
-                            <h3 className="text-white">Home Electronis</h3> <small className="text-white">Serving Customers</small>
+                    <div className="cardlogin cardlogin2">
+                        <div className="my-auto mx-md-5 px-md-5 rightlogin">
+                            <h3 className="text-white">Home Electronics</h3> 
                         </div>
                     </div>
                 </div>

@@ -1,5 +1,4 @@
 import React,{createContext} from "react";
-import Login from "./Login";
 
 
 const authContext = createContext();

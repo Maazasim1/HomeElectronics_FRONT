@@ -27481,7 +27481,7 @@ body.text-sm .input-group-text {
 .bg-warning > .card-header .btn-tool,
 .bg-gradient-warning > .card-header .btn-tool,
 .card-warning:not(.card-outline) > .card-header .btn-tool {
-  color: rgba(31, 45, 61, 0.8);
+  color: white;
 }
 
 .bg-warning > .card-header .btn-tool:hover,
@@ -27508,12 +27508,12 @@ body.text-sm .input-group-text {
 .card.bg-gradient-warning .bootstrap-datetimepicker-widget table td.minute:hover,
 .card.bg-gradient-warning .bootstrap-datetimepicker-widget table td.second:hover {
   background-color: #dda600;
-  color: #1f2d3d;
+  color: white;
 }
 
 .card.bg-warning .bootstrap-datetimepicker-widget table td.today::before,
 .card.bg-gradient-warning .bootstrap-datetimepicker-widget table td.today::before {
-  border-bottom-color: #1f2d3d;
+  border-bottom-color:white;
 }
 
 .card.bg-warning .bootstrap-datetimepicker-widget table td.active,
@@ -27521,7 +27521,7 @@ body.text-sm .input-group-text {
 .card.bg-gradient-warning .bootstrap-datetimepicker-widget table td.active,
 .card.bg-gradient-warning .bootstrap-datetimepicker-widget table td.active:hover {
   background-color: #ffce3a;
-  color: #1f2d3d;
+  color: white;
 }
 
 .card-danger:not(.card-outline) > .card-header {
@@ -29898,7 +29898,7 @@ html.maximized-card {
 .dark-mode .bg-warning > .card-header .btn-tool:hover,
 .dark-mode .bg-gradient-warning > .card-header .btn-tool:hover,
 .dark-mode .card-warning:not(.card-outline) > .card-header .btn-tool:hover {
-  color: #1f2d3d;
+  color: white;
 }
 
 .dark-mode .card.bg-warning .bootstrap-datetimepicker-widget .table td,

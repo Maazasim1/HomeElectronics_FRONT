@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import * as actions from '../actions/pos';
 import {useEffect,useState} from 'react';
-import './forms.css'
+import './forms.scss'
 
 
 function Expenses(props){
@@ -25,7 +25,7 @@ function Expenses(props){
 
 
      const handleSubmit =e=>{
-         actions.TableString.StringOfTable="Expenses";
+         actions.TableString.StringOfTable="DoubleEntryMaster";
 
 
         console.log("Now Putting into lists")

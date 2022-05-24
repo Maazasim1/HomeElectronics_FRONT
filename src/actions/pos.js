@@ -2,7 +2,7 @@ import api from './api';
 
 
     
-    const baseurl = "http://0.0.0.0:5000/api/";
+    const baseurl = "https://dangerous-snake-22.loca.lt/api/";
 
 export var TableString={StringOfTable:""};
 
@@ -40,8 +40,8 @@ export const create = (data,onSuccess,Table=TableString.StringOfTable) => dispat
     .catch(err=>console.log(err));
 }
 
-export const update = (data,id,onSuccess,Table) => dispatch => {
-    api.pos(baseurl,Table).update(id,data,Table)
+export const update = (data,id,onSuccess,Table=TableString.StringOfTable) => dispatch => {
+    api.pos(baseurl,Table).update(id,data)
     .then(response=>{
         dispatch({
             type:ACTION_TYPES.UPDATE,
@@ -52,7 +52,7 @@ export const update = (data,id,onSuccess,Table) => dispatch => {
     .catch(err=>console.log(err))
 }
 
-export const Delete = (id,onSuccess,Table) => dispatch => {
+export const Delete = (id,onSuccess,Table=TableString.StringOfTable) => dispatch => {
     api.pos(baseurl,Table).delete(id)
     .then(response=>{
         dispatch({

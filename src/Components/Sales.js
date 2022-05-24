@@ -1,9 +1,8 @@
 import React, {useState} from 'react';
-import './forms.css'
+import './forms.scss'
 import {connect} from 'react-redux';
 import * as actions from '../actions/pos';
-import * as Sales_preview from './Sales_preview';
-
+import * as Sales_preview from './preview';
 
 
 
@@ -17,7 +16,12 @@ function Sales(props) {
    const [filtered, setFiltered] = useState([]);
    const [isShow, setIsShow] = useState(false);
    const [input, setInput] = useState("");
+
+    const saved = localStorage.getItem("username");
+    
    
+   
+
    const onChange = e => {
      const  suggestions  = ["123","456"];
      const input = e.currentTarget.value;
@@ -83,8 +87,9 @@ function Sales(props) {
       ItemBrand:'Haier',
       ItemType:'AC',
       ItemSKU:'',
-      ItemQuantity:'',
+      ItemQuatity:'',
       ItemPrice:'',
+      SalesmanName:''
    }
    const [values,setValues] = useState(intialvalues);
 
@@ -92,6 +97,7 @@ function Sales(props) {
     actions.TableString.StringOfTable="Bill_Child_Temp";
 
       setValues(values.ItemSKU=input)
+      setValues(values.SalesmanName=saved)
       console.log(input)
       e.preventDefault();
       console.log(values);
@@ -107,7 +113,7 @@ function Sales(props) {
          [name]: value
       })
    }
-
+   
 
    
    return (
@@ -154,8 +160,8 @@ function Sales(props) {
       </div>    
       
       <div className="form-field col-lg-6 ">
-         <input name="ItemQuantity" onChange={handleInputChange} value={values.ItemQuantity} id="ItemQuantity" className="input-text js-input" type="Number" required/>
-         <label className="label" for="Number">ItemQuantity</label>
+         <input name="ItemQuatity" onChange={handleInputChange} value={values.ItemQuatity} id="ItemQuatity" className="input-text js-input" type="Number" required/>
+         <label className="label" for="Number">ItemQuatity</label>
       </div>
 
      
@@ -184,11 +190,9 @@ function Sales(props) {
    
    const mapActionToProps =  {
       createPos: actions.create,
+      deletePos: actions.Delete
       
       
    }
    
    export default connect(mapStateToProps,mapActionToProps)(Sales);
-   
-   
-   

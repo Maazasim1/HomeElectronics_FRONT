@@ -2,7 +2,7 @@ import React from 'react';
 import * as actions from '../actions/pos';
 import {connect} from 'react-redux';
 import {useState} from 'react';
-import './forms.css'
+import './forms.scss'
 
 
 
@@ -37,7 +37,7 @@ function StockTransfer(props){
 
 
     return(
-        <div>
+        <div style={{paddingLeft:"10vw"}}>
             <section className="pos">
         <form className='contact-form row' onSubmit={handleSubmit} >
             <h3 className="subtitle">Stock Transfer</h3>

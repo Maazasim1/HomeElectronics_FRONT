@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import './forms.css'
+import './forms.scss'
 import {connect} from 'react-redux';
 import * as actions from '../actions/pos';
 import PrintInvoice from './PrintInvoice'
@@ -9,21 +9,21 @@ import * as Sales_preview from './Sales_preview';
 
 
 
-
 function SalesMaster(props) {
    var today = new Date();
    var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
 
-
+   const temp=localStorage.getItem("username");
+   
     const initial={
        SaleType:"Normal",
-         BillCreatedBy:'',
+         BillCreatedBy:temp,
         BillCreatedOn:date,
         CustomerName:'',
-        CustomerPhoneNumber:'',
+        CustomerCNIC:'',
         CustomerAddress:'',
         DeliveryCharges:'',
-        InstallationChares:''
+        InstallationChares:0,
     }
 
     const [values,setValues] = useState(initial);
@@ -71,7 +71,8 @@ function SalesMaster(props) {
     <h1 className="title">CheckOut</h1>
     <form className="contact-form row" onSubmit={handleSubmit}>
     <div className="form-field col-lg-6">
-          <input name="BillCreatedBy"   id="posName" className="input-text js-input" type="text" required value={values.BillCreatedBy} onChange={handleInputChange}/>
+
+          <a name="BillCreatedBy"   id="posName" className="input-text js-input">SalesMan = {temp}</a>
           <label className="label" for="">POS Employee Name</label>
        </div>
 
@@ -81,7 +82,7 @@ function SalesMaster(props) {
        </div>
 
         <div className="form-field col-lg-6 ">
-          <input name="CustomerPhoneNumber" value={values.CustomerPhoneNumber} onChange={handleInputChange}  id="phone" className="input-text js-input" type="text" required/>
+          <input name="CustomerCNIC" value={values.CustomerCNIC} onChange={handleInputChange}  id="phone" className="input-text js-input" type="text" required/>
           <label className="label" for="phone">Contact Number</label>
        </div>
 
@@ -100,7 +101,7 @@ function SalesMaster(props) {
        </div>
        <div className="form-field col-lg-6 ">
           <label className="label" for="payment">Payment Method</label>
-          <select name="Payment" id="pay" value={method} onChange={e=>setMethod(e.target.value)}  >
+          <select className="form-select" name="Payment" id="pay" value={method} onChange={e=>setMethod(e.target.value)}  >
          <option value="Bank Transfer">Bank Transfer</option>
          <option value="Cheque">Cheque</option>
          <option value="Cash">Cash</option>
@@ -142,25 +143,24 @@ function SalesMaster(props) {
            ) : method === 'Cash' ? (
              
                 <div>
-             
-             <div className="form-field col-lg-6">
-                <input name="Amount"   id="Cash" className="input-text js-input" type="text" onChange={e=>setAmount(e.target.value)} required/>
-                <label className="label" for="Bank">Amount</label>
-             </div>
-          <div className="form-field col-lg-6 ">
-          <label className="label" for="Change">Change: {changes} PKR</label>
-       </div>
-             
-             
-          
-          </div>
+             <form className="contact-form row">
+            <div className="form-field col-lg-6">
+               <input name="Amount"   id="Cash" className="input-text js-input" type="text" onChange={e=>setAmount(e.target.value)} required/>
+               <label className="label" for="Bank">Amount</label>
+            </div>
+            
+            <div className="form-field col-lg-6 ">
+               <label className="label" for="Change">Change: {changes} PKR</label>
+            </div>
+            </form>
+            </div>
            
            ) : null
          }
        </div>
        <div className="form-field col-lg-6 ">
           <label className="label" for="payment">Sale Type</label>
-          <select name="Type" id="pay" value={values.SaleType} onChange={handleInputChange}  >
+          <select className="form-select" name="Type" id="pay" value={values.SaleType} onChange={handleInputChange}  >
          <option value="Normal">Normal</option>
          <option value="Credit">Credit</option>
          

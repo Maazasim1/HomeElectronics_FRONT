@@ -1,6 +1,6 @@
 import React from 'react';
 import {useEffect} from "react";
-import './forms.css'
+import './forms.scss'
 import {connect} from 'react-redux';
 import * as actions from '../actions/pos';
 import './Sales_preview.css'

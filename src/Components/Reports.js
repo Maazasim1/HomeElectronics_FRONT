@@ -1,4 +1,4 @@
-import './forms.css';
+import './forms.scss';
 
 function Forms(props){
 

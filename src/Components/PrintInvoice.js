@@ -1,10 +1,27 @@
-import jsPDFInvoiceTemplate,{OutputType}from "jspdf-invoice-template";
-import './forms.css'
+import React, { useState,useEffect } from "react";
+import jsPDFInvoiceTemplate, { OutputType } from "jspdf-invoice-template";
+import './forms.scss'
+import { connect } from 'react-redux';
+import * as actions from '../actions/pos';
 
 
 
-function PrintInvoice(props){
+function PrintInvoice(props) {
+    var [date,setDate] = useState(new Date());
     
+    
+    let sumQuantity = (props.poslist.reduce((acc,record)=>(acc + record.ItemQuantity*record.ItemPrice),0))
+  
+    
+    
+    
+    useEffect(() => {
+        actions.TableString.StringOfTable="Bill_Child_Temp";
+        console.log('Updating Invoice')
+        props.fetchAllPos();
+        
+    }, []);
+
     var arguement = {
         outputType: OutputType.Save,
         returnJsPDFDocObject: true,
@@ -35,46 +52,56 @@ function PrintInvoice(props){
         invoice: {
             label: "Invoice #: ",
             num: 1,
-            invDate: "Payment Date: 06/12/2021 6:48",
-            
+            invDate: "Payment Date:" +date.toLocaleDateString()+"  "+ date.toLocaleTimeString(),
+
             headerBorder: false,
             tableBodyBorder: false,
             header: ["#", "Description", "Price", "Quantity", "Total"],
-            table: Array.from(Array(1), (item, index)=>([
-                index + 1,
-            "Haier Refrigenerator SKU:1128937 ",
-            10000,
-            4,
-            40000
-        ])),
-        invTotalLabel: "Total:",
-        invTotal: "40,000",
-        invCurrency: "PKR",
-        
-        
-        invDescLabel: "Invoice Note",
-        invDesc: "I AM JUST TESTING THIS COMPONENT AT THIS TIME TESTER:MAAZ ASIM",
-    },
-    footer: {
-        text: "The invoice is created on a computer and is valid without the signature and stamp.",
-    },
-    pageEnable: true,
-    pageLabel: "Page ",
-};
+            table:
+                props.poslist.map((item, index) => ([
+                    index + 1,
+                    item.ItemSKU,
+                    item.ItemPrice,
+                    item.ItemQuantity,
+                    item.ItemQuantity * item.ItemPrice
+                ])),
+            invTotalLabel: "Total:",
+            invTotal: sumQuantity.toString(),
+            invCurrency: "PKR",
 
-function printInvoiceOnClick () {
-const pdfObject=jsPDFInvoiceTemplate(arguement).jsPDFDocObject;
 
-    pdfObject.autoPrint();
-    pdfObject.output('dataurlnewwindow');
-    
+            invDescLabel: "Invoice Note",
+            invDesc: "I AM JUST TESTING THIS COMPONENT AT THIS TIME TESTER:MAAZ ASIM",
+        },
+        footer: {
+            text: "The invoice is created on a computer and is valid without the signature and stamp.",
+        },
+        pageEnable: true,
+        pageLabel: "Page ",
+    };
+
+    function printInvoiceOnClick() {
+        const pdfObject = jsPDFInvoiceTemplate(arguement).jsPDFDocObject;
+
+        pdfObject.autoPrint();
+        pdfObject.output('dataurlnewwindow');
+
+    }
+
+    return (
+
+        <div className="form-field col-lg-12">
+           
+            <input className="submit-btn" type="button" value="Print Invoice" onClick={printInvoiceOnClick} />
+        </div>
+    );
 }
 
-return(
-    
-<div className="form-field col-lg-12">
-         <input  className="submit-btn" type="button" value="Print Invoice" onClick={printInvoiceOnClick}/>
-</div>    
-);
+
+const mapStateToProps = state => ({
+    poslist: state.pos.list
+})
+const mapActionToProps =  {
+    fetchAllPos: actions.fetchall
 }
-export default PrintInvoice;
+export default connect(mapStateToProps,mapActionToProps)(PrintInvoice);

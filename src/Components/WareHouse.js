@@ -2,12 +2,12 @@ import React from 'react';
 import * as actions from '../actions/pos';
 import {connect} from 'react-redux';
 import {useState} from 'react';
-import './forms.css'
+import './forms.scss'
 import { ToastContainer,toast } from 'react-toastify';
 
 
 function WareHouse(props){
-    const notify=()=>{toast("hello");}
+   
     const intialvalues={
         ItemBrand:'Haier',
         ItemType:'AC',
@@ -21,7 +21,6 @@ function WareHouse(props){
      
      const handleSubmit =e=>{
          actions.TableString.StringOfTable="StockDetails";
-        notify();
 
         console.log("Now Putting into lists")
         
@@ -44,7 +43,6 @@ function WareHouse(props){
     return(
         <div style={{paddingLeft:"10vw"}}>
             <section className="pos">
-                <h1 className="title">WareHouse Management</h1>
             <form className="contact-form row" onSubmit={handleSubmit}>
             <h3 className="subtitle">Add New items in stock</h3>
             <div className="form-field col-lg-6">
@@ -57,29 +55,8 @@ function WareHouse(props){
                     <option value="3">Shop</option>
                 </select>
                 </div>
-                <div className="form-field col-lg-6">
-    <label className="label" for="Supplier" style={{marginBottom:"20px"}}>Supplier</label>
-   <select value={values.ItemBrand} onChange={handleInputChange} name="ItemBrand" id="comp">
-        <option value="Haier">Haier</option>
-        <option value="Anex">Anex</option>
-        <option value="Dawlance">Dawlance</option>
-        <option value="Samsung">Samsung</option>
-        <option value="LG">LG</option>
-        <option value="Hyundai">Hyundai</option>
-        <option value="TCL">TCL</option>
-        <option value="Sony">Sony</option>
-    </select>
-      </div>
-      <div className="form-field col-lg-6">
-        <label className="label" for="Type" style={{marginBottom:"20px"}}>Type</label>
-        <select value={values.ItemType} name="ItemType" id="lang">
-            <option value="AC">AC</option>
-            <option value="LED">LED</option>
-            <option value="Refrigerator">Refrigerator</option>
-            <option value="Heater">Heater</option>
-            <option value="Washing">Washing Machine</option>
-      </select>
-      </div>
+                
+      
       <div className="form-field col-lg-6">
          <input name="Item_ModelNumber" onChange={handleInputChange} value={values.Item_ModelNumber} id="SKU" className="input-text js-input" type="text" required/>
          <label className="label" for="">Product SKU</label>
